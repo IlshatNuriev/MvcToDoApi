@@ -5,8 +5,13 @@ namespace MvcToDoApi.Models
 {
     public enum StatusOfProject
     {
-        NotStarted, 
-        Active, 
+        [Display(Name = "Not started")]
+        NotStarted,
+
+        [Display(Name = "Active")]
+        Active,
+
+        [Display(Name = "Completed")]
         Completed
     }
     public class ProjectItem
@@ -28,6 +33,9 @@ namespace MvcToDoApi.Models
         public StatusOfProject StatusOfProject { get; set; }
 
         public int Priority { get; set; }
+
+        public ICollection<TaskItem>? TaskItems { get; set; }
+
         
     }
 }

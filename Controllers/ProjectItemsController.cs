@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcToDoApi.Data;
 using MvcToDoApi.Models;
+using PagedList;
 
 namespace MvcToDoApi.Controllers
 {
@@ -20,9 +21,37 @@ namespace MvcToDoApi.Controllers
         }
 
         // GET: ProjectItems
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(/*string sortOrder, string currentFilter,*/ string searchString/*, int? page*/)
         {
-              return _context.ProjectItem != null ? 
+            ////ViewBag.CurrentSort = sortOrder;
+            ////ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ////ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            //if (searchString != null)
+            //{
+            //    page = 1;
+            //}
+            //else
+            //{
+            //    searchString = currentFilter;
+            //}
+
+            //ViewBag.CurrenFilter = searchString;
+
+            //var projectItems = from p in db.ProjectItems
+            //                   select p;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    projectItems = projectItems.Where(p => p.Name.ToUpper().Contains(searchString.ToUpper()));
+            //}
+            //switch (sortOrder)
+            //{
+
+            //}
+
+
+            return _context.ProjectItem != null ?
                           View(await _context.ProjectItem.ToListAsync()) :
                           Problem("Entity set 'MvcToDoApiContext.ProjectItem'  is null.");
         }

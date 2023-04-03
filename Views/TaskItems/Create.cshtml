@@ -1,4 +1,4 @@
-﻿@model MvcToDoApi.Models.ProjectItem
+﻿@model MvcToDoApi.Models.TaskItem
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>ProjectItem</h4>
+<h4>TaskItem</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,24 +18,23 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
+                <label asp-for="StatusOfTask" class="control-label"></label>
+                <select asp-for="StatusOfTask" class="form-control"></select>
+                <span asp-validation-for="StatusOfTask" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StatusOfProject" class="control-label"></label>
-                <select asp-for="StatusOfProject" class="form-control" asp-items="@Html.GetEnumSelectList<StatusOfProject>()"></select>
-                <span asp-validation-for="StatusOfProject" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Priority" class="control-label"></label>
                 <input asp-for="Priority" class="form-control" />
                 <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectItemId" class="control-label"></label>
+                <select asp-for="ProjectItemId" class ="form-control" asp-items="ViewBag.ProjectItemId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

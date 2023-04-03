@@ -15,5 +15,7 @@ namespace MvcToDoApi.Data
         }
 
         public DbSet<MvcToDoApi.Models.ProjectItem> ProjectItem { get; set; } = default!;
+
+        public DbSet<MvcToDoApi.Models.TaskItem> TaskItem { get; set; } = default!;
     }
 }

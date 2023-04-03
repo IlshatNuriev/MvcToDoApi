@@ -25,7 +25,7 @@ namespace MvcToDoApi.SeedData
                         Name = "Create models",
                         StartDate = DateTime.Parse("31-3-2023"),
                         EndDate = DateTime.Parse("2-4-2023"),
-                        StatusOfProject = StatusOfProject.Completed,
+                        StatusOfProject = StatusOfProject.Active,
                         Priority = 1
                     },
 
