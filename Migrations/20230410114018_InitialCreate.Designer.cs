@@ -12,7 +12,7 @@ using MvcToDoApi.Data;
 namespace MvcToDoApi.Migrations
 {
     [DbContext(typeof(MvcToDoApiContext))]
-    [Migration("20230331094413_InitialCreate")]
+    [Migration("20230410114018_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,6 +52,52 @@ namespace MvcToDoApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProjectItem");
+                });
+
+            modelBuilder.Entity("MvcToDoApi.Models.TaskItem", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<long>("ProjectItemId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("StatusOfTask")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectItemId");
+
+                    b.ToTable("TaskItem");
+                });
+
+            modelBuilder.Entity("MvcToDoApi.Models.TaskItem", b =>
+                {
+                    b.HasOne("MvcToDoApi.Models.ProjectItem", "ProjectItem")
+                        .WithMany("TaskItems")
+                        .HasForeignKey("ProjectItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProjectItem");
+                });
+
+            modelBuilder.Entity("MvcToDoApi.Models.ProjectItem", b =>
+                {
+                    b.Navigation("TaskItems");
                 });
 #pragma warning restore 612, 618
         }
